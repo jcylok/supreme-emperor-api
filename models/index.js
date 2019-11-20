@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-// require('dotenv').config();
-const dbUrl = process.env.MONGO_URI || 'mongodb://localhost:27017/supreme-emperor-api' 
+require('dotenv').config();
+const dbUrl = process.env.MONGO_URI;
 
 
 mongoose.connect(dbUrl, {
@@ -14,6 +14,8 @@ mongoose.connect(dbUrl, {
 .then(() => console.log('MongoDB connected..'))
 .catch((err) => console.log(`MongoDB connection error: ${err}`));
 
-// module.exports ={
+module.exports ={
+    User: require('./User'),
+    Post: require('./Post'),
 
-// }
+};
