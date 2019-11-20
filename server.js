@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 4000;
 
 
 app.get('/', (req, res) => {
-    res.send('<h1>AUTH API</h1>');
+    res.send('<h1>SUPREME EMPEROR</h1>');
 });
 
 
