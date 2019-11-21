@@ -11,10 +11,10 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: [true, 'Title is required'],
     },
-    author: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-    }],
+    // author: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User',
+    // }],
     body: {
         type: String,
         required: [true, 'Body is required'],

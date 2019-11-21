@@ -46,7 +46,7 @@ const login = (req, res) => {
         if (err) return res.status(500).json({status: 500, message: 'Something went wrong. Please try again'});
 
         if (!foundUser) {
-            return res.status(400).json({status: 400, message: 'Username or password is incorrect'});
+            return res.status(400).json({status: 400, message: 'Email or password is incorrect'});
         }
         bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
             if (err) return res.status(500).json({ status: 500, message: 'Somethign went wrong. Please try again'});
@@ -55,7 +55,7 @@ const login = (req, res) => {
                 req.session.currentUser = { id: foundUser._id};
                 return res.status(200).json({ status: 200, message: 'Success', data: foundUser._id});
             } else {
-                return res.status(400).json({ status: 400, message: 'Username or password is incorrect'});
+                return res.status(400).json({ status: 400, message: 'Email or password is incorrect'});
             }
         });
     });
