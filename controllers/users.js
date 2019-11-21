@@ -1,6 +1,5 @@
-module.exports={
-    auth: require('./auth')
-}
+const db = require('../models');
+
 
  const showCurrentUser = (req, res) => {
      if (!req.session.currentUser) return res.status(401).json({

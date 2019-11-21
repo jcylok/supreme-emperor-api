@@ -3,7 +3,7 @@ const router = express.Router();
 const ctrl = require('../controllers');
 
 
-router.get('/:id', ctrl, ctlrl.users.show);
+router.get('/:id', ctrl.users.showCurrentUser);
 
 
 
