@@ -58,6 +58,7 @@ const login = (req, res) => {
 
             if (isMatch) {
                 req.session.currentUser = { id: foundUser._id};
+                console.log(req.session)
                 return res.status(200).json({ status: 200, message: 'Success', data: foundUser._id});
             } else {
                 return res.status(400).json({ status: 400, message: 'Email or password is incorrect'});
@@ -70,7 +71,8 @@ const login = (req, res) => {
 // POST Logout 
 
 const logout = (req, res) => {
-    if (!req.sessions.currentUser) return res.status(401).json({ status: 401, message: 'Unauthorized'});
+    console.log(req.session)
+    if (!req.session.currentUser) return res.status(401).json({ status: 401, message: 'Unauthorized'});
     req.session.destroy((err) =>{
         if (err) return res.status(500).json({ status: 500, message: 'Something went wrong. Please try again'});
         res.sendStatus(200);

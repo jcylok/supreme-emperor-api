@@ -2,6 +2,7 @@ const db = require('../models');
 
 
  const showCurrentUser = (req, res) => {
+     console.log(req.session)
      if (!req.session.currentUser) return res.status(401).json({
          status:401,
          message: 'Unauthorized. Please login and try again.'
