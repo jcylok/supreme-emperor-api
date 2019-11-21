@@ -2,11 +2,11 @@ const express = require('express');
 
 const app = express();
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 
 app.get('/', (req, res) => {
-    res.send('<h1>AUTH API</h1>');
+    res.send('<h1>SUPREME EMPEROR</h1>');
 });
 
 
