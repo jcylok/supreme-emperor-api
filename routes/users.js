@@ -3,8 +3,8 @@ const router = express.Router();
 const ctrl = require('../controllers');
 
 
-router.get('/:id', ctrl.users.showCurrentUser);
-
+router.get('/:id', ctrl.users.showCurrentUser),
+// router.put('/'. ctrl.users.editCurrentUser)
 
 
 module.exports = router;
