@@ -4,8 +4,8 @@ const db = require('../models');
 
 // POST REGISTER -- Create New User
 const register = (req, res) => {
-    if (!req.body.name || !req.body.email || !req.body.password) {
-        return res.status(400).json({ status: 400, message: 'Please enter your name, email and password'});
+    if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.currentCity || !req.body.password ) {
+        return res.status(400).json({ status: 400, message: 'Please fill out all the information'});
     }
     // Verify Account Does Not Already Exist
     db.User.findOne({ email: req.body.email }, (err, foundUser) => {
@@ -21,8 +21,10 @@ const register = (req, res) => {
                 if (err) return res.status(500).json({ status: 500, message: 'Something went wrong. Please try again'});
 
                 const newUser = {
-                    name: req.body.name,
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
                     email: req.body.email,
+                    currentCity: req.body.currentCity,
                     password: hash,
                 }
 
