@@ -28,7 +28,6 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: [true, 'Current city is required'],
     },
-    // ANCHOR 
     posts: [{
         type: Schema.Types.ObjectId,
         ref: 'Post',
