@@ -10,7 +10,7 @@ const CitySchema = mongoose.Schema({
         type: String,
     },
     posts: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
     }],
 })
