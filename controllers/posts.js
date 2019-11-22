@@ -53,7 +53,17 @@ const createPost = (req, res) => {
             count: 1,
             data: createdPost,
             dateCreated: new Date().toLocaleString(),
-        });
+        })
+        db.User.findById(req.body.author, (err, user) =>{
+          if (err) return console.log(err)
+          if (user){
+            user.posts.push(createdPost._id)
+            user.save((err, result) => {
+              if (err) return console.log(err)
+              console.log(result)
+            })
+          }
+        })
     });
 };
 
@@ -63,7 +73,7 @@ const updatePost = (req, res) => {
     db.Post.findByIdAndUpdate(
       req.params.id,
       req.body,
-      {new: true}, (error, updatedPost) => {
+      {new: true}, (err, updatedPost) => {
         if (err)  return res.status(500).json({
           status: 500,
           error: [{message: 'Something went wrong! Please try again'}],
@@ -77,6 +87,22 @@ const updatePost = (req, res) => {
         });
       });
   }
+
+// Users posts
+
+const userPosts = (req, res) => {
+  db.User.findById({_id:req.params.id}, (err, foundUser)=>{
+    if (err) return res.status(500)
+    if (foundUser) {
+      foundUser.populate("posts").execPopulate((err, user) => {
+        if (err) return res.status(500).json({err})
+        res.send({status: 200, posts: user.posts})
+      })
+    } else {
+      res.status(500).json({message: 'User not found'})
+    }
+  })
+}
 
 
 // Destroy Post
@@ -103,5 +129,6 @@ module.exports = {
     showOnePost,
     createPost,
     updatePost,
+    userPosts,
     destroy,
 }

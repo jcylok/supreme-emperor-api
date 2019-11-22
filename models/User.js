@@ -25,7 +25,7 @@ const UserSchema = mongoose.Schema({
         required: [true, 'Current city is required'],
     },
     posts: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
     }],
     dateJoined: {
