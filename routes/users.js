@@ -4,7 +4,7 @@ const ctrl = require('../controllers');
 
 
 router.get('/:id', ctrl.users.showCurrentUser),
-// router.put('/'. ctrl.users.editCurrentUser)
+router.put('/:id', ctrl.users.editCurrentUser)
 
 
 module.exports = router;
