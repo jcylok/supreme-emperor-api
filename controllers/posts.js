@@ -104,6 +104,22 @@ const userPosts = (req, res) => {
   })
 }
 
+// Cities Posts
+
+const cityPosts = (req, res) => {
+  db.City.findById({_id:req.params.id}, (err, foundCity) => {
+    if (err) return res.status(500)
+    if (foundCity) {
+      foundCity.populate("posts").execPopulate((err, city) => {
+        if (err) return res.status(500).json({err})
+        res.send({status: 200, posts: city.posts})
+      })
+    } else {
+      res.status(500).json({message: 'City not found'})
+    }
+  })
+}
+
 
 // Destroy Post
 
@@ -130,5 +146,6 @@ module.exports = {
     createPost,
     updatePost,
     userPosts,
+    cityPosts,
     destroy,
 }
