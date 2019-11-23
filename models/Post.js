@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const PostSchema = mongoose.Schema({
     city: {
-        type: String,
-        required: [true, 'City is required'],
+        type: Schema.Types.ObjectId,
+        ref: 'City',
     },
     title: {
         type: String,
