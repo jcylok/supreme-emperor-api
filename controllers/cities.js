@@ -37,7 +37,7 @@ const showOneCity = (req, res) => {
             res.json({
                 status: 404,
                 count: 0,
-                data: `Post with ID ${req.params.cityId} was not found. Please try again.`
+                data: `City with name ${req.params.cityName} was not found. Please try again.`
             })
         }
     })

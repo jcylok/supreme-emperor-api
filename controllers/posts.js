@@ -107,7 +107,7 @@ const userPosts = (req, res) => {
 // Cities Posts
 
 const cityPosts = (req, res) => {
-  db.City.findById({_id:req.params.cityId}, (err, foundCity) => {
+  db.City.findOne({urlName :req.params.cityName}, (err, foundCity) => {
     if (err) return res.status(500)
     if (foundCity) {
       foundCity.populate("posts").execPopulate((err, city) => {
