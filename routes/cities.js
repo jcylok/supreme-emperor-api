@@ -4,7 +4,7 @@ const ctrl = require('../controllers');
 
 
 router.get('/', ctrl.cities.showCity),
-router.get('/:cityId', ctrl.cities.showOneCity),
+router.get('/:cityName', ctrl.cities.showOneCity),
 router.post('/', ctrl.cities.createCity)
 
 
