@@ -23,7 +23,8 @@ const showCity = (req, res) => {
 
 
 const showOneCity = (req, res) => {
-    db.City.findById(req.params.cityId, (error, foundCity) => {
+    console.log(req.params.cityName)
+    db.City.findOne({urlName: req.params.cityName}, (error, foundCity) => {
         if (error) return console.log(error);
         if (foundCity) {
             res.json({

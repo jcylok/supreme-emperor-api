@@ -6,6 +6,12 @@ const CitySchema = mongoose.Schema({
         type: String,
         required: [true, 'Name is required'],
     },
+    country: {
+        type: String,
+    },
+    urlName: {
+        type: String,
+    },
     picture: {
         type: String,
     },
