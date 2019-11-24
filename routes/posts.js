@@ -8,6 +8,7 @@ router.get('/:postId', ctrl.posts.showOnePost),
 router.post('/', ctrl.posts.createPost),
 router.put('/', ctrl.posts.updatePost),
 router.get('/:id/posts', ctrl.posts.userPosts),
+router.get('/:cityId/city-posts', ctrl.posts.cityPosts),
 router.delete('/', ctrl.posts.destroy)
 
 
