@@ -15,6 +15,10 @@ const CitySchema = mongoose.Schema({
     picture: {
         type: String,
     },
+    country: {
+        type: String,
+        required: [true, 'Name is required'],
+    },
     posts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
