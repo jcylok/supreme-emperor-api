@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-// const cors = require('cors');
+const cors = require('cors');
 
 const app = express();
 require('dotenv').config();
@@ -22,7 +22,7 @@ const corsOptions = {
     optionsSuccessStatus: 200
 };
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 // BodyParser
 
