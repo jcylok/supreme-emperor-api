@@ -23,7 +23,7 @@ const showCity = (req, res) => {
 
 
 const showOneCity = (req, res) => {
-    console.log(req.params.cityName)
+    // console.log(req.params.cityName)
     db.City.findOne({urlName: req.params.cityName}, (error, foundCity) => {
         if (error) return console.log(error);
         if (foundCity) {
@@ -37,7 +37,30 @@ const showOneCity = (req, res) => {
             res.json({
                 status: 404,
                 count: 0,
-                data: `Post with ID ${req.params.cityId} was not found. Please try again.`
+                data: `City with name ${req.params.cityName} was not found. Please try again.`
+            })
+        }
+    })
+}
+
+// Show One City by ID
+
+
+const showOneCityById = (req, res) => {
+    db.City.findById({_id: req.params.id}, (error, foundCity) => {
+        if (error) return console.log(error);
+        if (foundCity) {
+            res.json({
+                status: 200,
+                count: 1,
+                data: foundCity,
+                requestedAt: new Date().toLocaleString(),
+            });
+        } else {
+            res.json({
+                status: 404,
+                count: 0,
+                data: `City with ID ${req.params.id} was not found. Please try again.`
             })
         }
     })
@@ -89,5 +112,6 @@ const createCity = (req, res) => {
 module.exports = {
     showCity,
     showOneCity,
+    showOneCityById,
     createCity,
 }
