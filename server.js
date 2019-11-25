@@ -52,4 +52,4 @@ app.use('/api/v1/users', routes.users);
 app.use('/api/v1/posts', routes.posts);
 app.use('/api/v1/cities', routes.cities);
 
-app.listen(PORT, () => console.log(`Server connected at http://localhost:${PORT}`))
+app.listen(process.env.PORT || 4000, () => console.log(`Server connected at http://localhost:${PORT}`))
