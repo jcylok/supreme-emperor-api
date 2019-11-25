@@ -53,6 +53,18 @@ const createPost = (req, res) => {
             count: 1,
             data: createdPost,
             dateCreated: new Date().toLocaleString(),
+        });
+        //FIND USER - PUSH POST
+        db.User.findById({_id:req.params.userId}, (err, user) =>{
+          console.log(req.params)
+          if (err) return console.log(err)
+          if (user){
+            user.posts.push(createdPost._id)
+            user.save((err, result) => {
+              if (err) return console.log(err)
+              console.log(result)
+            })
+          }
         })
         //FIND CITY - PUSH POST
         db.City.findOne({urlName:req.params.cityName}, (err, city) =>{
@@ -64,18 +76,7 @@ const createPost = (req, res) => {
               console.log(result)
             })
           }
-        })
-        //FIND USER - PUSH POST
-        db.User.findById({_id:req.params.userId}, (err, user) =>{
-          if (err) return console.log(err)
-          if (user){
-            user.posts.push(createdPost._id)
-            user.save((err, result) => {
-              if (err) return console.log(err)
-              console.log(result)
-            })
-          }
-        })
+        });
     });
 };
 
