@@ -2,12 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const cors = require('cors');
+// const cors = require('cors');
 
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT;
-const JEFF_IP = process.env.JEFF_IP;
+
 
 const routes = require('./routes');
 
@@ -17,12 +17,12 @@ const routes = require('./routes');
 // CORS - Cross Origin Resource Sharing
 
 const corsOptions = {
-    origin: [`http://localhost:3000`, JEFF_IP],
+    origin: [`http://localhost:3000`],
     credentials: true,
     optionsSuccessStatus: 200
 };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // BodyParser
 
