@@ -19,6 +19,10 @@ const PostSchema = mongoose.Schema({
         type: String,
         required: [true, 'Body is required'],
     },
+    photoUrl: {
+        type: String,
+        required: [true, 'photoUrl is required'],
+    },
     dateCreated: {
         type: Date,
         default: Date.now
