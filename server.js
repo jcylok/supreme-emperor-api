@@ -7,6 +7,7 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT;
+const JEFF_IP = process.env.JEFF_IP;
 
 const routes = require('./routes');
 
@@ -16,7 +17,7 @@ const routes = require('./routes');
 // CORS - Cross Origin Resource Sharing
 
 const corsOptions = {
-    origin: [`http://localhost:3000`],
+    origin: [`http://localhost:3000`, JEFF_IP],
     credentials: true,
     optionsSuccessStatus: 200
 };
