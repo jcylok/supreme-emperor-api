@@ -11,10 +11,6 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: [true, 'Last name is required'],
     },
-    username: {
-        type: String,
-        required: [true, 'Username is required'],
-    },
     password: {
         type: String,
         required: [true, 'Password is required'],
@@ -28,9 +24,8 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: [true, 'Current city is required'],
     },
-    // ANCHOR 
     posts: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Post',
     }],
     dateJoined: {
