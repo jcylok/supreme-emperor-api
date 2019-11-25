@@ -111,7 +111,7 @@ const createCity = (req, res) => {
 
 module.exports = {
     showCity,
-    showOneCity,
+    showOneCity, // THIS IS SHOW BY cityName
     showOneCityById,
     createCity,
 }
