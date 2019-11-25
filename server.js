@@ -8,6 +8,7 @@ const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT;
 
+
 const routes = require('./routes');
 
 
@@ -31,7 +32,7 @@ app.use(bodyParser.json());
 // Express Session - Authentication
 
 app.use(session({
-    store: new MongoStore({ url: process.env.MONGO_URI}),
+    store: new MongoStore({ url: process.env.MONGODB_URI}),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
