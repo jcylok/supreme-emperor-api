@@ -54,7 +54,19 @@ const createPost = (req, res) => {
             data: createdPost,
             dateCreated: new Date().toLocaleString(),
         })
-        db.User.findById(req.body.author, (err, user) =>{
+        //FIND CITY - PUSH POST
+        db.City.findOne({urlName:req.params.cityName}, (err, city) =>{
+          if (err) return console.log(err)
+          if (city){
+            city.posts.push(createdPost._id)
+            city.save((err, result) => {
+              if (err) return console.log(err)
+              console.log(result)
+            })
+          }
+        })
+        //FIND USER - PUSH POST
+        db.User.findById({_id:req.params.userId}, (err, user) =>{
           if (err) return console.log(err)
           if (user){
             user.posts.push(createdPost._id)
