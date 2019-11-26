@@ -84,7 +84,7 @@ const createPost = (req, res) => {
 
 const updatePost = (req, res) => {
     db.Post.findByIdAndUpdate(
-      req.params.id,
+      req.params.postid,
       req.body,
       {new: true}, (err, updatedPost) => {
         if (err)  return res.status(500).json({
@@ -134,6 +134,28 @@ const cityPosts = (req, res) => {
 }
 
 
+
+const authorName = (req, res) => {
+  console.log(req.session)
+  if (!req.session) return res.status(401).json({
+      status:401,
+      message: 'Unauthorized. Please login and try again.'
+  });
+
+  db.User.findById({_id:req.params.id}, (err, foundAuthor) => {
+      if (err) return res.status(500).json({
+          status: 500,
+          message: err,
+      });
+      res.status(200).json({
+          status: 200,
+          data: foundAuthor,
+      });
+  });
+
+};
+
+
 // Destroy Post
 
 const destroy = (req, res) => {
@@ -160,5 +182,6 @@ module.exports = {
     updatePost,
     userPosts,
     cityPosts,
+    authorName,
     destroy,
 }
