@@ -17,7 +17,7 @@ const routes = require('./routes');
 // CORS - Cross Origin Resource Sharing
 
 const corsOptions = {
-    origin: [`http://localhost:3000`],
+    origin: [`http://localhost:3000`,`https://supreme-emperor-react.herokuapp.com`],
     credentials: true,
     optionsSuccessStatus: 200
 };
@@ -53,4 +53,4 @@ app.use('/api/v1/users', routes.users);
 app.use('/api/v1/posts', routes.posts);
 app.use('/api/v1/cities', routes.cities);
 
-app.listen(PORT, () => console.log(`Server connected at http://localhost:${PORT}`))
+app.listen(process.env.PORT || 4000, () => console.log(`Server connected at http://localhost:${PORT}`))
