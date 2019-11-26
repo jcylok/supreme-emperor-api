@@ -11,9 +11,5 @@ router.get('/:id/posts', ctrl.posts.userPosts),
 router.get('/city/:cityName', ctrl.posts.cityPosts),
 router.delete('/:id', ctrl.posts.destroy)
 
-
-
-
-
 module.exports = router;
 
