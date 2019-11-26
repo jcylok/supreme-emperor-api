@@ -7,17 +7,14 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 const PORT = process.env.PORT;
-
-
 const routes = require('./routes');
 
 
 // ---------- MiddleWare ------------- //
 
 // CORS - Cross Origin Resource Sharing
-
 const corsOptions = {
-    origin: [`http://localhost:3000`],
+    origin: [`http://localhost:3000`,`https://supreme-emperor-react.herokuapp.com`],
     credentials: true,
     optionsSuccessStatus: 200
 };
@@ -25,12 +22,10 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // BodyParser
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 // Express Session - Authentication
-
 app.use(session({
     store: new MongoStore({ url: process.env.MONGODB_URI}),
     secret: process.env.SESSION_SECRET,
@@ -41,13 +36,9 @@ app.use(session({
     }
 }));
 
-
 app.get('/', (req, res) => {
     res.send('<h1>SUPREME EMPEROR</h1>');
 });
-
-
-
 app.use('/api/v1/auth', routes.auth);
 app.use('/api/v1/users', routes.users);
 app.use('/api/v1/posts', routes.posts);
