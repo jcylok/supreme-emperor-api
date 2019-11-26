@@ -31,7 +31,7 @@ const UserSchema = mongoose.Schema({
         default: Date.now,
     },
     profilePhoto: {
-        type: String, 
+        type: String, default:'https://s.pngix.com/pngfile/s/468-4685538_bear-default-avatar-default-avatar-hd-png-download.png'
     },
 });
 
