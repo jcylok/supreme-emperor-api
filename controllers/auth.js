@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const db = require('../models');
 
-
 // POST REGISTER -- Create New User
 const register = (req, res) => {
     if (!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.currentCity || !req.body.password ) {
@@ -67,7 +66,6 @@ const login = (req, res) => {
     });
 };
 
-
 // POST Logout 
 
 const logout = (req, res) => {
@@ -78,7 +76,6 @@ const logout = (req, res) => {
         res.sendStatus(200);
     });
 };
-
 
 // GET Verify Current User
 

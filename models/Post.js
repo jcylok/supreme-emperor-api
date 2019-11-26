@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 const PostSchema = mongoose.Schema({
     city: {
         type: Schema.Types.ObjectId,
@@ -27,8 +26,6 @@ const PostSchema = mongoose.Schema({
         type: Date,
         default: Date.now
     }
-    // ANCHOR 
-    // comment: [],
 })
 
 const Post = mongoose.model('Post', PostSchema);
